@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="23" fill="#0d3b66"/>
+  <circle cx="24" cy="24" r="19" fill="none" stroke="#4fc3f7" stroke-width="2"/>
+  <path d="M24 8v32M24 8l-4.5 4.5M24 8l4.5 4.5M13 15l22 18M13 15l1 6.5M13 15l6.5-1M35 33L13 15M35 33l-1-6.5M35 33l-6.5 1M13 33l22-18M13 33l6.5 1M13 33l-1-6.5M35 15L13 33M35 15l-6.5-1M35 15l1 6.5" stroke="#f4762a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+</svg>
