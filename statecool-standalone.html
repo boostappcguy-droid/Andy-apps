@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Cool AC &amp; Heating | Houston, TX HVAC Experts</title>
+<meta name="description" content="Family-owned HVAC company serving Houston, Tomball, Conroe, The Woodlands and surrounding Texas communities since 2012. Same-day AC &amp; heating installation, repair, maintenance, and indoor air quality services.">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjMiIGZpbGw9IiMwZDNiNjYiLz4KICA8Y2lyY2xlIGN4PSIyNCIgY3k9IjI0IiByPSIxOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGZjM2Y3IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cGF0aCBkPSJNMjQgOHYzMk0yNCA4bC00LjUgNC41TTI0IDhsNC41IDQuNU0xMyAxNWwyMiAxOE0xMyAxNWwxIDYuNU0xMyAxNWw2LjUtMU0zNSAzM0wxMyAxNU0zNSAzM2wtMS02LjVNMzUgMzNsLTYuNSAxTTEzIDMzbDIyLTE4TTEzIDMzbDYuNSAxTTEzIDMzbC0xLTYuNU0zNSAxNUwxMyAzM00zNSAxNWwtNi41LTFNMzUgMTVsMSA2LjUiIHN0cm9rZT0iI2Y0NzYyYSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --navy: #0b1f33;
+  --navy-soft: #12304d;
+  --blue-900: #0d3b66;
+  --blue-700: #146c94;
+  --blue-500: #1e9bd7;
+  --sky-400: #4fc3f7;
+  --ice-100: #eaf7fd;
+  --ice-50: #f6fbfe;
+  --white: #ffffff;
+  --ink: #14212e;
+  --ink-soft: #4c5c6b;
+  --line: #e1edf3;
+  --orange-500: #f4762a;
+  --orange-600: #de5f14;
+  --amber-100: #fff1e6;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+  --shadow-sm: 0 2px 10px rgba(13, 59, 102, 0.08);
+  --shadow-md: 0 12px 30px rgba(13, 59, 102, 0.12);
+  --shadow-lg: 0 24px 60px rgba(11, 31, 51, 0.18);
+  --container: 1180px;
+  --transition: 0.25s ease;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4{ font-family: inherit; margin: 0 0 .5em; line-height: 1.15; color: var(--navy); font-weight: 800; }
+p{ margin: 0 0 1em; color: var(--ink-soft); line-height: 1.7; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin:0; padding:0; list-style:none; }
+img{ max-width:100%; display:block; }
+button{ font: inherit; cursor: pointer; }
+input, select, textarea{ font: inherit; }
+
+.container{ max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+.icon{ width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+.icon--sm{ width: 16px; height: 16px; }
+.icon--lg{ width: 34px; height: 34px; }
+.icon--xl{ width: 56px; height: 56px; }
+
+/* ============ Buttons ============ */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 26px; border-radius: 999px; font-weight: 700; font-size: 0.95rem;
+  border: 2px solid transparent; transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.btn:hover{ transform: translateY(-2px); }
+.btn--primary{ background: var(--orange-500); color: #fff; box-shadow: 0 10px 24px rgba(244, 118, 42, .35); }
+.btn--primary:hover{ background: var(--orange-600); }
+.btn--outline{ border-color: var(--blue-700); color: var(--blue-700); background: transparent; }
+.btn--outline:hover{ background: var(--blue-700); color: #fff; }
+.btn--ghost{ background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.5); backdrop-filter: blur(4px); }
+.btn--ghost:hover{ background: #fff; color: var(--blue-900); border-color:#fff; }
+.btn--light{ background: #fff; color: var(--blue-900); }
+.btn--light:hover{ background: var(--ice-100); }
+.btn--outline-light{ border-color: rgba(255,255,255,.7); color: #fff; }
+.btn--outline-light:hover{ background: #fff; color: var(--blue-900); }
+.btn--sm{ padding: 9px 18px; font-size: 0.85rem; }
+.btn--lg{ padding: 16px 32px; font-size: 1rem; }
+.btn--block{ width: 100%; }
+
+/* ============ Topbar ============ */
+.topbar{ background: var(--navy); color: #cfe8f5; font-size: 0.85rem; }
+.topbar__inner{ display: flex; align-items: center; justify-content: space-between; padding: 8px 24px; gap: 16px; flex-wrap: wrap; }
+.topbar__info{ display: flex; align-items: center; gap: 16px; }
+.topbar__link{ display: inline-flex; align-items: center; gap: 6px; transition: color var(--transition); }
+.topbar__link:hover{ color: var(--sky-400); }
+.topbar__link--divider{ padding-left: 16px; border-left: 1px solid rgba(255,255,255,.25); }
+.topbar__social{ display: flex; align-items: center; gap: 14px; }
+.topbar__badge{ background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; letter-spacing: .02em; }
+.topbar__social a{ display:flex; opacity: .85; transition: opacity var(--transition); }
+.topbar__social a:hover{ opacity: 1; }
+
+/* ============ Header ============ */
+.header{
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.header__inner{ display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: 24px; }
+.logo{ display: flex; align-items: center; gap: 10px; color: var(--navy); }
+.logo__icon{ width: 40px; height: 40px; color: var(--blue-700); }
+.logo__text{ font-weight: 800; font-size: 1.15rem; line-height: 1.1; display: flex; flex-direction: column; }
+.logo__text em{ font-style: normal; font-weight: 600; font-size: 0.62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-500); }
+
+.nav{ display: flex; align-items: center; gap: 30px; }
+.nav a{ font-weight: 600; font-size: 0.94rem; color: var(--ink); position: relative; padding: 6px 0; transition: color var(--transition); }
+.nav a::after{ content:''; position:absolute; left:0; bottom:0; height:2px; width:0; background: var(--orange-500); transition: width var(--transition); }
+.nav a:hover{ color: var(--blue-700); }
+.nav a:hover::after{ width: 100%; }
+
+.header__cta{ display: flex; align-items: center; gap: 10px; }
+
+.hamburger{ display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px; }
+.hamburger span{ width: 24px; height: 2.5px; background: var(--navy); border-radius: 2px; transition: transform var(--transition), opacity var(--transition); }
+.hamburger.is-active span:nth-child(1){ transform: translateY(7.5px) rotate(45deg); }
+.hamburger.is-active span:nth-child(2){ opacity: 0; }
+.hamburger.is-active span:nth-child(3){ transform: translateY(-7.5px) rotate(-45deg); }
+
+.mobile-nav{
+  position: fixed; top: 0; right: -100%; width: min(320px, 84%); height: 100vh;
+  background: var(--navy); z-index: 200; padding: 90px 30px 30px;
+  display: flex; flex-direction: column; gap: 22px; transition: right .35s ease;
+  box-shadow: -20px 0 60px rgba(0,0,0,.3);
+}
+.mobile-nav.is-open{ right: 0; }
+.mobile-nav a{ color: #eaf7fd; font-weight: 600; font-size: 1.05rem; }
+.mobile-nav .btn{ margin-top: 10px; }
+
+/* ============ Hero ============ */
+.hero{ position: relative; overflow: hidden; background: linear-gradient(160deg, var(--navy) 0%, var(--blue-900) 55%, var(--blue-700) 100%); padding: 90px 0 70px; }
+.hero__bg{ position: absolute; inset: 0; z-index: 0; }
+.hero__blob{ position: absolute; border-radius: 50%; filter: blur(60px); opacity: .35; }
+.hero__blob--1{ width: 480px; height: 480px; background: var(--sky-400); top: -180px; right: -120px; }
+.hero__blob--2{ width: 380px; height: 380px; background: var(--orange-500); bottom: -160px; left: -100px; opacity: .18; }
+.hero__grid{
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 60% 30%, black, transparent 70%);
+}
+.hero__inner{ position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: center; }
+
+.eyebrow{ display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 14px; }
+.hero__content h1{ color: #fff; font-size: clamp(2.1rem, 4vw, 3.1rem); margin-bottom: 20px; }
+.hero__content h1 span{ display: block; color: var(--sky-400); }
+.hero__lead{ color: #cfe4ef; font-size: 1.08rem; max-width: 540px; }
+.hero__actions{ display: flex; flex-wrap: wrap; gap: 16px; margin: 26px 0 40px; }
+
+.hero__trust{ display: grid; grid-template-columns: repeat(4, auto); gap: 26px; }
+.trust-item{ display: flex; flex-direction: column; }
+.trust-item strong{ color: #fff; font-size: 1.3rem; font-weight: 800; }
+.trust-item span{ color: #9ec4da; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+
+.hero__visual{ position: relative; }
+.hero__card{ background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(14px); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-lg); }
+.hero__card-top{ display: flex; gap: 18px; align-items: flex-start; color: #fff; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.15); }
+.hero__card-top .icon--lg{ color: var(--sky-400); background: rgba(79,195,247,.12); padding: 12px; border-radius: 14px; box-sizing: content-box; }
+.hero__card-top strong{ display:block; font-size: 1.05rem; margin-bottom: 4px; }
+.hero__card-top span{ color: #b9d7e6; font-size: 0.9rem; }
+.hero__card-stat{ display: flex; justify-content: space-between; padding-top: 22px; }
+.stat-num{ display: block; color: var(--orange-500); font-size: 1.7rem; font-weight: 800; }
+.stat-label{ display: block; color: #b9d7e6; font-size: 0.8rem; margin-top: 4px; }
+
+/* ============ Strip ============ */
+.strip{ background: var(--ice-100); border-bottom: 1px solid var(--line); }
+.strip__inner{ display: flex; align-items: center; gap: 22px; padding: 16px 24px; flex-wrap: wrap; }
+.strip__inner > span{ font-weight: 700; color: var(--blue-900); font-size: 0.88rem; }
+.strip__cities{ display: flex; gap: 12px; flex-wrap: wrap; }
+.strip__cities span{ background: #fff; border: 1px solid var(--line); color: var(--ink-soft); padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; }
+
+/* ============ Sections ============ */
+.section{ padding: 90px 0; }
+.section--alt{ background: var(--ice-50); }
+.section__head{ max-width: 680px; margin: 0 auto 56px; text-align: center; }
+.section__head h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.section__head .eyebrow{ color: var(--blue-700); }
+
+/* ============ Cards / Services ============ */
+.cards{ display: grid; gap: 28px; }
+.cards--3{ grid-template-columns: repeat(3, 1fr); }
+.card{
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 34px 30px; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.card--center{ text-align: center; }
+.card__icon{
+  width: 58px; height: 58px; border-radius: 16px; background: var(--ice-100); color: var(--blue-700);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.card--center .card__icon{ margin-inline: auto; }
+.card__icon svg{ width: 28px; height: 28px; }
+.card__icon--lg{ width: 68px; height: 68px; border-radius: 50%; background: var(--amber-100); color: var(--orange-500); }
+.card__icon--lg svg{ width: 32px; height: 32px; }
+.card h3{ font-size: 1.2rem; margin-bottom: 10px; }
+.card__list{ margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.card__list li{ position: relative; padding-left: 20px; color: var(--ink-soft); font-size: 0.94rem; }
+.card__list li::before{ content:''; position:absolute; left:0; top:8px; width:8px; height:8px; border-radius:50%; background: var(--orange-500); }
+.card__link{ color: var(--blue-700); font-weight: 700; font-size: 0.92rem; }
+.card__social{ display: flex; justify-content: center; gap: 18px; margin-top: 10px; }
+.card__social a{ color: var(--blue-700); font-weight: 700; font-size: 0.92rem; }
+
+/* ============ About ============ */
+.about{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: center; }
+.about__badge-card{
+  background: linear-gradient(160deg, var(--blue-900), var(--navy)); color: #fff; border-radius: var(--radius-lg);
+  padding: 46px 34px; text-align: center; box-shadow: var(--shadow-lg);
+}
+.about__badge-card .icon--xl{ color: var(--sky-400); margin: 0 auto 18px; }
+.about__badge-card strong{ display: block; font-size: 1.3rem; margin-bottom: 4px; }
+.about__badge-card span{ display: block; color: #9ec4da; font-size: 0.9rem; margin-bottom: 18px; }
+.about__badge-card a{ color: var(--orange-500); font-weight: 700; font-size: 0.92rem; }
+.about__content h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.about__stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+.about__stats div{ background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px; text-align: center; }
+.about__stats strong{ display: block; color: var(--blue-900); font-size: 1.15rem; font-weight: 800; }
+.about__stats span{ display: block; color: var(--ink-soft); font-size: 0.78rem; margin-top: 4px; text-transform: uppercase; letter-spacing: .03em; }
+
+/* ============ Service Area ============ */
+.area{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: center; }
+.area__map{ background: linear-gradient(160deg, var(--ice-100), #fff); border: 1px solid var(--line); border-radius: var(--radius-lg); min-height: 320px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+.area__map-inner{ text-align: center; color: var(--blue-700); }
+.area__map-inner .icon--xl{ margin: 0 auto 14px; }
+.area__map-inner p{ color: var(--blue-900); font-weight: 700; margin: 0; }
+.area__cities{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 34px; }
+.area__city{ display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); }
+.area__city em{ color: var(--ink-soft); font-style: normal; font-size: 0.82rem; }
+.dot{ width: 9px; height: 9px; border-radius: 50%; background: var(--orange-500); flex-shrink: 0; }
+
+.zip-check{ background: var(--ice-100); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 26px; }
+.zip-check label{ display: block; font-weight: 700; color: var(--navy); margin-bottom: 12px; font-size: 0.95rem; }
+.zip-check__row{ display: flex; gap: 12px; }
+.zip-check__row input{ flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--line); font-size: 0.95rem; }
+.zip-check__row input:focus{ outline: none; border-color: var(--blue-500); }
+.zip-check__result{ margin: 14px 0 0; font-weight: 600; font-size: 0.92rem; min-height: 1.4em; }
+.zip-check__result.is-success{ color: #16824f; }
+.zip-check__result.is-warn{ color: var(--orange-600); }
+
+/* ============ CTA Banner ============ */
+.cta-banner{ background: linear-gradient(120deg, var(--orange-600), var(--orange-500)); padding: 60px 0; }
+.cta-banner__inner{ display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+.cta-banner h2{ color: #fff; margin-bottom: 6px; font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.cta-banner p{ color: rgba(255,255,255,.9); margin: 0; }
+.cta-banner__actions{ display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ============ Contact ============ */
+.contact{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; }
+.contact__list{ display: flex; flex-direction: column; gap: 18px; margin: 28px 0; }
+.contact__list li{ display: flex; align-items: flex-start; gap: 14px; color: var(--ink-soft); }
+.contact__list .icon{ color: var(--blue-700); margin-top: 3px; }
+.contact__list a{ color: var(--ink); font-weight: 600; }
+.contact__list a:hover{ color: var(--blue-700); }
+.contact__social{ display: flex; gap: 14px; }
+.contact__social a{ width: 42px; height: 42px; border-radius: 50%; background: var(--ice-100); color: var(--blue-700); display: flex; align-items: center; justify-content: center; transition: background var(--transition), color var(--transition); }
+.contact__social a:hover{ background: var(--blue-700); color: #fff; }
+
+.contact__form{ background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-md); }
+.form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group{ margin-bottom: 20px; display: flex; flex-direction: column; }
+.form-group label{ font-weight: 700; font-size: 0.85rem; color: var(--navy); margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea{
+  padding: 12px 15px; border-radius: 10px; border: 1px solid var(--line); font-size: 0.95rem; background: var(--ice-50); resize: vertical;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{ outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(30,155,215,.15); background: #fff; }
+.form-error{ display: none; color: #d0392b; font-size: 0.78rem; margin-top: 6px; }
+.form-group.is-invalid input, .form-group.is-invalid select{ border-color: #d0392b; }
+.form-group.is-invalid .form-error{ display: block; }
+.form-success{ display: none; margin: 16px 0 0; text-align: center; font-weight: 700; color: #16824f; background: #e9f9f0; border: 1px solid #b9e8cd; border-radius: 10px; padding: 12px; }
+.form-success.is-visible{ display: block; }
+
+/* ============ Footer ============ */
+.footer{ background: var(--navy); color: #b9d7e6; }
+.footer__inner{ display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding: 70px 24px 40px; }
+.footer__brand p{ color: #9ec4da; font-size: 0.92rem; margin: 16px 0 20px; }
+.logo--footer{ color: #fff; }
+.logo--footer .logo__icon{ color: var(--sky-400); }
+.footer__social{ display: flex; gap: 12px; }
+.footer__social a{ width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: #cfe8f5; transition: background var(--transition); }
+.footer__social a:hover{ background: var(--orange-500); color: #fff; }
+.footer__col h4{ color: #fff; font-size: 0.95rem; margin-bottom: 18px; }
+.footer__col{ display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem; }
+.footer__col a:hover{ color: var(--sky-400); }
+.footer__bottom{ border-top: 1px solid rgba(255,255,255,.12); padding: 20px 0; }
+.footer__bottom-inner{ display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.82rem; color: #82a7bd; }
+
+/* ============ Floating call button (mobile) ============ */
+.fab{
+  display: none; position: fixed; bottom: 22px; right: 22px; z-index: 150;
+  width: 58px; height: 58px; border-radius: 50%; background: var(--orange-500); color: #fff;
+  align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(244,118,42,.45);
+}
+
+/* ============ Reveal animation ============ */
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: translateY(0); }
+
+/* ============ Responsive ============ */
+@media (max-width: 980px){
+  .hero__inner{ grid-template-columns: 1fr; }
+  .hero__visual{ order: -1; }
+  .about, .area, .contact{ grid-template-columns: 1fr; }
+  .about__visual{ max-width: 360px; margin: 0 auto; }
+  .footer__inner{ grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 860px){
+  .nav, .header__cta{ display: none; }
+  .hamburger{ display: flex; }
+  .fab{ display: flex; }
+  .cards--3{ grid-template-columns: 1fr; }
+  .hero__trust{ grid-template-columns: repeat(2, auto); row-gap: 20px; }
+}
+
+@media (max-width: 640px){
+  .topbar__inner{ justify-content: center; text-align: center; }
+  .topbar__badge{ display: none; }
+  .section{ padding: 64px 0; }
+  .form-row{ grid-template-columns: 1fr; }
+  .area__cities{ grid-template-columns: 1fr; }
+  .cta-banner__inner{ text-align: center; justify-content: center; }
+  .cta-banner__actions{ justify-content: center; }
+  .footer__inner{ grid-template-columns: 1fr; text-align: left; }
+  .footer__bottom-inner{ flex-direction: column; text-align: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Top utility bar -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__info">
+      <a href="tel:8327135266" class="topbar__link">
+        <svg viewBox="0 0 24 24" class="icon icon--sm"><path d="M6.6 10.8c1.4 2.9 3.7 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        (832) 713-5266
+      </a>
+      <a href="tel:7133918198" class="topbar__link topbar__link--divider">(713) 391-8198</a>
+    </div>
+    <div class="topbar__social">
+      <span class="topbar__badge">Family Owned Since 2012</span>
+      <a href="https://www.instagram.com/statecoolac/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" class="icon icon--sm"><path d="M12 2c2.7 0 3.1 0 4.1.06 1 .05 1.7.2 2.3.45.6.25 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.24.6.4 1.3.45 2.3.05 1 .06 1.4.06 4.1s0 3.1-.06 4.1c-.05 1-.2 1.7-.45 2.3-.25.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.24-1.3.4-2.3.45-1 .05-1.4.06-4.1.06s-3.1 0-4.1-.06c-1-.05-1.7-.2-2.3-.45-.6-.25-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.24-.6-.4-1.3-.45-2.3C2 15.1 2 14.7 2 12s0-3.1.06-4.1c.05-1 .2-1.7.45-2.3.25-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.24 1.3-.4 2.3-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-3 0-4 .06-.9.04-1.4.18-1.7.3-.4.16-.7.36-1 .66-.3.3-.5.6-.66 1-.12.3-.26.8-.3 1.7-.05 1-.06 1.4-.06 4s0 3 .06 4c.04.9.18 1.4.3 1.7.16.4.36.7.66 1 .3.3.6.5 1 .66.3.12.8.26 1.7.3 1 .05 1.3.06 4 .06s3 0 4-.06c.9-.04 1.4-.18 1.7-.3.4-.16.7-.36 1-.66.3-.3.5-.6.66-1 .12-.3.26-.8.3-1.7.05-1 .06-1.3.06-4s0-3-.06-4c-.04-.9-.18-1.4-.3-1.7-.16-.4-.36-.7-.66-1-.3-.3-.6-.5-1-.66-.3-.12-.8-.26-1.7-.3-1-.05-1.4-.06-4-.06zm0 4.4a3.8 3.8 0 110 7.6 3.8 3.8 0 010-7.6zm0 1.8a2 2 0 100 4 2 2 0 000-4zm4.8-2a.9.9 0 110 1.8.9.9 0 010-1.8z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/StatecoolHouston/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" class="icon icon--sm"><path d="M13.5 21v-7.6h2.6l.4-3H13.5V8.4c0-.9.25-1.5 1.55-1.5H16.6V4.2C16.3 4.16 15.3 4 14.1 4c-2.4 0-4 1.5-4 4.2v2.2H7.5v3h2.6V21h3.4z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Header / Nav -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#home" class="logo">
+      <svg viewBox="0 0 48 48" class="logo__icon">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M24 10v28M24 10l-5 5M24 10l5 5M14.6 17l24.8 14M14.6 17l1.2 6.8M14.6 17l6.8-1.2M33.4 31l-24.8-14M33.4 31l-1.2-6.8M33.4 31l-6.8 1.2M14.6 31l24.8-14M14.6 31l6.8 1.2M14.6 31l-1.2-6.8M33.4 17l-24.8 14M33.4 17l-6.8-1.2M33.4 17l1.2 6.8" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      </svg>
+      <span class="logo__text">State Cool<em>AC &amp; Heating</em></span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#area">Service Area</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header__cta">
+      <a href="tel:8327135266" class="btn btn--outline btn--sm">
+        <svg viewBox="0 0 24 24" class="icon icon--sm"><path d="M6.6 10.8c1.4 2.9 3.7 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        Call Now
+      </a>
+      <a href="#contact" class="btn btn--primary btn--sm">Get Free Quote</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#area">Service Area</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:8327135266" class="btn btn--primary">Call (832) 713-5266</a>
+</div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__blob hero__blob--1"></div>
+      <div class="hero__blob hero__blob--2"></div>
+      <div class="hero__grid"></div>
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__content reveal">
+        <span class="eyebrow">Houston Metro's Trusted HVAC Team</span>
+        <h1>Stay Cool When Texas Heats Up.<span> Stay Warm When It Doesn't.</span></h1>
+        <p class="hero__lead">State Cool AC &amp; Heating is a family-owned HVAC company serving the Houston area since 2012. From same-day installs to emergency repairs, we keep homes and businesses comfortable across Southeast Texas.</p>
+
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary btn--lg">Schedule Service</a>
+          <a href="tel:8327135266" class="btn btn--ghost btn--lg">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M6.6 10.8c1.4 2.9 3.7 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+            (832) 713-5266
+          </a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="trust-item">
+            <strong>13+</strong><span>Years in Business</span>
+          </div>
+          <div class="trust-item">
+            <strong>BBB</strong><span>Accredited Business</span>
+          </div>
+          <div class="trust-item">
+            <strong>1-Day</strong><span>Installations</span>
+          </div>
+          <div class="trust-item">
+            <strong>Family</strong><span>Owned &amp; Operated</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal">
+        <div class="hero__card">
+          <div class="hero__card-top">
+            <svg viewBox="0 0 24 24" class="icon icon--lg"><path d="M4 10h16M4 14h16M7 6l-1 4M17 6l1 4M7 18l-1-4M17 18l1-4M12 6v4M12 14v4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="3" y="9" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+            <div>
+              <strong>Same-Day AC Install</strong>
+              <span>New system up and running before you know it.</span>
+            </div>
+          </div>
+          <div class="hero__card-stat">
+            <div>
+              <span class="stat-num">24/7</span>
+              <span class="stat-label">Emergency Support</span>
+            </div>
+            <div>
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Satisfaction Focused</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos / quick strip -->
+  <section class="strip">
+    <div class="container strip__inner">
+      <span>Proudly serving:</span>
+      <div class="strip__cities">
+        <span>Houston</span><span>Tomball</span><span>Conroe</span><span>The Woodlands</span><span>Surrounding Communities</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">What We Do</span>
+        <h2>Complete Heating &amp; Cooling Services</h2>
+        <p>Residential and commercial HVAC solutions built around comfort, reliability, and honest work — from brand-new installs to the small tune-ups that keep systems running for years.</p>
+      </div>
+
+      <div class="cards cards--3">
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M7 8V6a2 2 0 012-2h6a2 2 0 012 2v2M7 16v2M11 16v2M15 16v2M17 16v2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <h3>System Installation</h3>
+          <p>Complete setup of brand-new air conditioning and heating units — most residential installs completed in a single day, minimizing disruption to your home or business.</p>
+          <ul class="card__list">
+            <li>New AC &amp; furnace installation</li>
+            <li>Full system replacements</li>
+            <li>Residential &amp; commercial builds</li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 011.4 0l1.6 1.6a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-1.6-1.6a1 1 0 010-1.4l8-8z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M13 8l3 3M5.5 18.5L4 20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Repair &amp; Maintenance</h3>
+          <p>Fast, accurate diagnosis of system failures and ongoing tune-ups that optimize performance, extend equipment life, and lower your energy bills.</p>
+          <ul class="card__list">
+            <li>Diagnostic &amp; troubleshooting</li>
+            <li>Performance optimization</li>
+            <li>Seasonal maintenance plans</li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="2.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+          </div>
+          <h3>Indoor Air Quality</h3>
+          <p>Cleaner air for a healthier home. We handle thorough duct cleaning and regular air filter replacement to keep contaminants out of the air you breathe.</p>
+          <ul class="card__list">
+            <li>Duct cleaning</li>
+            <li>Air filter replacement</li>
+            <li>Air quality assessments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section--alt" id="about">
+    <div class="container about">
+      <div class="about__visual reveal">
+        <div class="about__badge-card">
+          <svg viewBox="0 0 24 24" class="icon icon--xl"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>BBB Accredited</strong>
+          <span>Better Business Bureau</span>
+          <a href="https://www.bbb.org/us/tx/tomball/profile/heating-and-air-conditioning/state-cool-0915-90069033" target="_blank" rel="noopener">View Profile →</a>
+        </div>
+      </div>
+
+      <div class="about__content reveal">
+        <span class="eyebrow">About State Cool</span>
+        <h2>A Family Business Built on Texas-Sized Trust</h2>
+        <p>Founded in 2012, State Cool AC &amp; Heating has grown into a trusted name across the Houston metropolitan area. As a family-owned and operated company, we treat every home and business like our own — showing up on time, communicating honestly, and standing behind our work.</p>
+        <p>Our headquarters is officially registered in <strong>Tomball, Texas</strong>, giving us a home base close to the communities we serve throughout Greater Houston.</p>
+
+        <div class="about__stats">
+          <div>
+            <strong>2012</strong>
+            <span>Company Founded</span>
+          </div>
+          <div>
+            <strong>Tomball, TX</strong>
+            <span>Headquarters</span>
+          </div>
+          <div>
+            <strong>Res. &amp; Comm.</strong>
+            <span>Services Offered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section class="section" id="area">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Where We Work</span>
+        <h2>Service Area Coverage</h2>
+        <p>We provide fast, reliable HVAC service throughout the Houston metro area and surrounding communities.</p>
+      </div>
+
+      <div class="area">
+        <div class="area__map reveal">
+          <div class="area__map-inner">
+            <svg viewBox="0 0 24 24" class="icon icon--xl"><path d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+            <p>Houston &amp; Surrounding Texas Communities</p>
+          </div>
+        </div>
+
+        <div class="area__content reveal">
+          <div class="area__cities">
+            <div class="area__city"><span class="dot"></span>Houston</div>
+            <div class="area__city"><span class="dot"></span>Tomball <em>(HQ)</em></div>
+            <div class="area__city"><span class="dot"></span>Conroe</div>
+            <div class="area__city"><span class="dot"></span>The Woodlands</div>
+            <div class="area__city"><span class="dot"></span>Nearby Communities</div>
+          </div>
+
+          <div class="zip-check">
+            <label for="zipInput">Check coverage in your zip code</label>
+            <div class="zip-check__row">
+              <input type="text" id="zipInput" inputmode="numeric" maxlength="5" placeholder="e.g. 77375">
+              <button type="button" id="zipBtn" class="btn btn--primary">Check</button>
+            </div>
+            <p class="zip-check__result" id="zipResult"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews / Trust -->
+  <section class="section section--alt" id="reviews">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Trusted Locally</span>
+        <h2>Accreditation &amp; Reputation</h2>
+        <p>Our reputation is built one job at a time — and it shows in how the community and industry organizations recognize our work.</p>
+      </div>
+
+      <div class="cards cards--3">
+        <div class="card card--center reveal">
+          <div class="card__icon card__icon--lg">
+            <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>BBB Accredited</h3>
+          <p>State Cool holds accreditation with the Better Business Bureau, reflecting our commitment to transparency and customer trust.</p>
+          <a href="https://www.bbb.org/us/tx/tomball/profile/heating-and-air-conditioning/state-cool-0915-90069033" target="_blank" rel="noopener" class="card__link">View BBB Profile →</a>
+        </div>
+
+        <div class="card card--center reveal">
+          <div class="card__icon card__icon--lg">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.9-5 4.8 1.3 6.9L12 17.6 5.9 21l1.3-6.9-5-4.8 6.9-.9L12 2z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>13+ Years of Service</h3>
+          <p>Since 2012, our family-owned team has served thousands of homes and businesses across the Houston metro area.</p>
+        </div>
+
+        <div class="card card--center reveal">
+          <div class="card__icon card__icon--lg">
+            <svg viewBox="0 0 24 24"><path d="M17 20h4v-2a4 4 0 00-3-3.87M7 20H3v-2a4 4 0 013-3.87m8-4a4 4 0 11-8 0 4 4 0 018 0zM17 8a4 4 0 110 8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Follow Us</h3>
+          <p>Stay up to date with tips, promotions and behind-the-scenes looks on our social channels.</p>
+          <div class="card__social">
+            <a href="https://www.instagram.com/statecoolac/" target="_blank" rel="noopener">Instagram →</a>
+            <a href="https://www.facebook.com/StatecoolHouston/" target="_blank" rel="noopener">Facebook →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner reveal">
+    <div class="container cta-banner__inner">
+      <div>
+        <h2>Ready for Reliable Comfort?</h2>
+        <p>Whether it's a repair, a same-day install, or a routine tune-up — our team is ready to help.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="tel:8327135266" class="btn btn--light btn--lg">Call (832) 713-5266</a>
+        <a href="#contact" class="btn btn--outline-light btn--lg">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container contact">
+      <div class="contact__info reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Request Service or a Free Quote</h2>
+        <p>Fill out the form and our team will get back to you shortly, or reach out directly using the info below.</p>
+
+        <ul class="contact__list">
+          <li>
+            <svg viewBox="0 0 24 24" class="icon"><path d="M6.6 10.8c1.4 2.9 3.7 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+            <div><a href="tel:8327135266">(832) 713-5266</a> &nbsp;/&nbsp; <a href="tel:7133918198">(713) 391-8198</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" class="icon"><path d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+            <div>Tomball, TX &mdash; Serving Houston, Conroe, The Woodlands &amp; nearby areas</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" class="icon"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+            <div><a href="https://statecool.com" target="_blank" rel="noopener">statecool.com</a></div>
+          </li>
+        </ul>
+
+        <div class="contact__social">
+          <a href="https://www.instagram.com/statecoolac/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M12 2c2.7 0 3.1 0 4.1.06 1 .05 1.7.2 2.3.45.6.25 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.24.6.4 1.3.45 2.3.05 1 .06 1.4.06 4.1s0 3.1-.06 4.1c-.05 1-.2 1.7-.45 2.3-.25.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.24-1.3.4-2.3.45-1 .05-1.4.06-4.1.06s-3.1 0-4.1-.06c-1-.05-1.7-.2-2.3-.45-.6-.25-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.24-.6-.4-1.3-.45-2.3C2 15.1 2 14.7 2 12s0-3.1.06-4.1c.05-1 .2-1.7.45-2.3.25-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.24 1.3-.4 2.3-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-3 0-4 .06-.9.04-1.4.18-1.7.3-.4.16-.7.36-1 .66-.3.3-.5.6-.66 1-.12.3-.26.8-.3 1.7-.05 1-.06 1.4-.06 4s0 3 .06 4c.04.9.18 1.4.3 1.7.16.4.36.7.66 1 .3.3.6.5 1 .66.3.12.8.26 1.7.3 1 .05 1.3.06 4 .06s3 0 4-.06c.9-.04 1.4-.18 1.7-.3.4-.16.7-.36 1-.66.3-.3.5-.6.66-1 .12-.3.26-.8.3-1.7.05-1 .06-1.3.06-4s0-3-.06-4c-.04-.9-.18-1.4-.3-1.7-.16-.4-.36-.7-.66-1-.3-.3-.6-.5-1-.66-.3-.12-.8-.26-1.7-.3-1-.05-1.4-.06-4-.06zm0 4.4a3.8 3.8 0 110 7.6 3.8 3.8 0 010-7.6zm0 1.8a2 2 0 100 4 2 2 0 000-4zm4.8-2a.9.9 0 110 1.8.9.9 0 010-1.8z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/StatecoolHouston/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M13.5 21v-7.6h2.6l.4-3H13.5V8.4c0-.9.25-1.5 1.55-1.5H16.6V4.2C16.3 4.16 15.3 4 14.1 4c-2.4 0-4 1.5-4 4.2v2.2H7.5v3h2.6V21h3.4z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+            <span class="form-error">Please enter your name.</span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+            <span class="form-error">Please enter a valid phone number.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+            <span class="form-error">Please enter a valid email.</span>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option value="installation">New System Installation</option>
+              <option value="repair">Repair &amp; Maintenance</option>
+              <option value="air-quality">Indoor Air Quality</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="form-error">Please select a service.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="zip">Zip Code</label>
+          <input type="text" id="zip" name="zip" inputmode="numeric" maxlength="5">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us a bit about what you need..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--block">Send Request</button>
+        <p class="form-success" id="formSuccess" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="#home" class="logo logo--footer">
+        <svg viewBox="0 0 48 48" class="logo__icon">
+          <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M24 10v28M24 10l-5 5M24 10l5 5M14.6 17l24.8 14M14.6 17l1.2 6.8M14.6 17l6.8-1.2M33.4 31l-24.8-14M33.4 31l-1.2-6.8M33.4 31l-6.8 1.2M14.6 31l24.8-14M14.6 31l6.8 1.2M14.6 31l-1.2-6.8M33.4 17l-24.8 14M33.4 17l-6.8-1.2M33.4 17l1.2 6.8" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        </svg>
+        <span class="logo__text">State Cool<em>AC &amp; Heating</em></span>
+      </a>
+      <p>Family-owned HVAC company serving the Houston metro area since 2012. Residential &amp; commercial installation, repair, and indoor air quality services.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/statecoolac/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" class="icon icon--sm"><path d="M12 2c2.7 0 3.1 0 4.1.06 1 .05 1.7.2 2.3.45.6.25 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.24.6.4 1.3.45 2.3.05 1 .06 1.4.06 4.1s0 3.1-.06 4.1c-.05 1-.2 1.7-.45 2.3-.25.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.24-1.3.4-2.3.45-1 .05-1.4.06-4.1.06s-3.1 0-4.1-.06c-1-.05-1.7-.2-2.3-.45-.6-.25-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.24-.6-.4-1.3-.45-2.3C2 15.1 2 14.7 2 12s0-3.1.06-4.1c.05-1 .2-1.7.45-2.3.25-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.24 1.3-.4 2.3-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-3 0-4 .06-.9.04-1.4.18-1.7.3-.4.16-.7.36-1 .66-.3.3-.5.6-.66 1-.12.3-.26.8-.3 1.7-.05 1-.06 1.4-.06 4s0 3 .06 4c.04.9.18 1.4.3 1.7.16.4.36.7.66 1 .3.3.6.5 1 .66.3.12.8.26 1.7.3 1 .05 1.3.06 4 .06s3 0 4-.06c.9-.04 1.4-.18 1.7-.3.4-.16.7-.36 1-.66.3-.3.5-.6.66-1 .12-.3.26-.8.3-1.7.05-1 .06-1.3.06-4s0-3-.06-4c-.04-.9-.18-1.4-.3-1.7-.16-.4-.36-.7-.66-1-.3-.3-.6-.5-1-.66-.3-.12-.8-.26-1.7-.3-1-.05-1.4-.06-4-.06zm0 4.4a3.8 3.8 0 110 7.6 3.8 3.8 0 010-7.6zm0 1.8a2 2 0 100 4 2 2 0 000-4zm4.8-2a.9.9 0 110 1.8.9.9 0 010-1.8z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/StatecoolHouston/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" class="icon icon--sm"><path d="M13.5 21v-7.6h2.6l.4-3H13.5V8.4c0-.9.25-1.5 1.55-1.5H16.6V4.2C16.3 4.16 15.3 4 14.1 4c-2.4 0-4 1.5-4 4.2v2.2H7.5v3h2.6V21h3.4z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#area">Service Area</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Services</h4>
+      <a href="#services">System Installation</a>
+      <a href="#services">Repair &amp; Maintenance</a>
+      <a href="#services">Indoor Air Quality</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <a href="tel:8327135266">(832) 713-5266</a>
+      <a href="tel:7133918198">(713) 391-8198</a>
+      <a href="https://statecool.com" target="_blank" rel="noopener">statecool.com</a>
+      <span>Tomball, TX</span>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>&copy; <span id="year"></span> State Cool AC &amp; Heating. All rights reserved.</span>
+      <span>Proudly serving Houston, Tomball, Conroe &amp; The Woodlands, TX</span>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:8327135266" class="fab" aria-label="Call State Cool AC & Heating">
+  <svg viewBox="0 0 24 24" class="icon"><path d="M6.6 10.8c1.4 2.9 3.7 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Footer year */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* Mobile nav toggle */
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+
+  function closeMobileNav() {
+    hamburger.classList.remove('is-active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.classList.remove('is-open');
+  }
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = mobileNav.classList.toggle('is-open');
+      hamburger.classList.toggle('is-active', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMobileNav);
+    });
+  }
+
+  /* Scroll reveal */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* Zip code coverage checker (front-end demo) */
+  var zipBtn = document.getElementById('zipBtn');
+  var zipInput = document.getElementById('zipInput');
+  var zipResult = document.getElementById('zipResult');
+
+  var coveredPrefixes = ['770', '773', '774', '775', '776', '777']; // Greater Houston / Tomball / Conroe / The Woodlands area
+
+  if (zipBtn && zipInput && zipResult) {
+    zipBtn.addEventListener('click', function () {
+      var zip = zipInput.value.trim();
+      zipResult.classList.remove('is-success', 'is-warn');
+
+      if (!/^\d{5}$/.test(zip)) {
+        zipResult.textContent = 'Please enter a valid 5-digit zip code.';
+        zipResult.classList.add('is-warn');
+        return;
+      }
+
+      var prefix = zip.substring(0, 3);
+      var isCovered = coveredPrefixes.indexOf(prefix) !== -1;
+
+      if (isCovered) {
+        zipResult.textContent = 'Good news! We likely service ' + zip + '. Call (832) 713-5266 to confirm and schedule.';
+        zipResult.classList.add('is-success');
+      } else {
+        zipResult.textContent = 'We may still be able to help in ' + zip + ' — give us a call at (832) 713-5266 to confirm coverage.';
+        zipResult.classList.add('is-warn');
+      }
+    });
+
+    zipInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') zipBtn.click();
+    });
+  }
+
+  /* Contact form validation + simulated submit */
+  var form = document.getElementById('contactForm');
+  var formSuccess = document.getElementById('formSuccess');
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      var name = document.getElementById('name');
+      var phone = document.getElementById('phone');
+      var email = document.getElementById('email');
+      var service = document.getElementById('service');
+
+      function toggleField(field, condition) {
+        var group = field.closest('.form-group');
+        if (condition) {
+          group.classList.remove('is-invalid');
+        } else {
+          group.classList.add('is-invalid');
+          valid = false;
+        }
+      }
+
+      toggleField(name, name.value.trim().length > 1);
+      toggleField(phone, /^[\d\s\-\(\)\+]{7,}$/.test(phone.value.trim()));
+      toggleField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+      toggleField(service, service.value !== '');
+
+      if (!valid) {
+        formSuccess.classList.remove('is-visible');
+        return;
+      }
+
+      formSuccess.textContent = 'Thanks, ' + name.value.trim().split(' ')[0] + '! Your request has been received. Our team will contact you shortly, or call us now at (832) 713-5266.';
+      formSuccess.classList.add('is-visible');
+      form.reset();
+    });
+  }
+
+  /* Header shadow on scroll */
+  var header = document.getElementById('header');
+  if (header) {
+    var lastScroll = 0;
+    window.addEventListener('scroll', function () {
+      var current = window.pageYOffset;
+      if (current > 10) {
+        header.style.boxShadow = '0 6px 24px rgba(11,31,51,0.08)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+      lastScroll = current;
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
