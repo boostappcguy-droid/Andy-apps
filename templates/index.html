@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reel Transcriber</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Reel Transcriber</h1>
+    <p class="subtitle">Paste a public Facebook or Instagram reel URL to get its spoken-word transcript and post caption.</p>
+
+    <form id="form">
+      <input type="url" id="url" placeholder="https://www.instagram.com/reel/..." required>
+      <button type="submit" id="caption-btn" data-mode="caption">Caption only</button>
+      <button type="submit" id="transcribe-btn" data-mode="transcribe">Transcribe</button>
+    </form>
+
+    <div id="status" role="status"></div>
+
+    <section id="result" hidden>
+      <h2>Caption</h2>
+      <p id="caption"></p>
+
+      <h2 id="transcript-heading">Transcript</h2>
+      <p id="transcript"></p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
