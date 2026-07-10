@@ -21,16 +21,21 @@ h1 {
 
 form {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 24px 0;
 }
 
 input[type="url"] {
-  flex: 1;
+  flex-basis: 100%;
   padding: 10px 12px;
   font-size: 1rem;
   border: 1px solid #999;
   border-radius: 6px;
+}
+
+#caption-btn {
+  background: #555;
 }
 
 button {

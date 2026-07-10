@@ -13,7 +13,8 @@
 
     <form id="form">
       <input type="url" id="url" placeholder="https://www.instagram.com/reel/..." required>
-      <button type="submit" id="submit-btn">Transcribe</button>
+      <button type="submit" id="caption-btn" data-mode="caption">Caption only</button>
+      <button type="submit" id="transcribe-btn" data-mode="transcribe">Transcribe</button>
     </form>
 
     <div id="status" role="status"></div>
@@ -22,7 +23,7 @@
       <h2>Caption</h2>
       <p id="caption"></p>
 
-      <h2>Transcript</h2>
+      <h2 id="transcript-heading">Transcript</h2>
       <p id="transcript"></p>
     </section>
   </main>

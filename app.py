@@ -24,6 +24,12 @@ def get_model():
     return _model
 
 
+def fetch_metadata(url):
+    ydl_opts = {"quiet": True, "no_warnings": True, "noplaylist": True}
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        return ydl.extract_info(url, download=False)
+
+
 def download_reel(url, out_dir):
     ydl_opts = {
         "outtmpl": os.path.join(out_dir, "%(id)s.%(ext)s"),
@@ -38,9 +44,41 @@ def download_reel(url, out_dir):
     return filename, info
 
 
+def validate_url(url):
+    if not url:
+        return "Please provide a reel URL."
+    if not URL_PATTERN.match(url):
+        return "URL must be a Facebook or Instagram link."
+    return None
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+@app.route("/api/caption", methods=["POST"])
+def caption_only():
+    data = request.get_json(silent=True) or {}
+    url = (data.get("url") or "").strip()
+
+    error = validate_url(url)
+    if error:
+        return jsonify({"error": error}), 400
+
+    try:
+        info = fetch_metadata(url)
+    except Exception as exc:
+        return jsonify({"error": f"Could not fetch this reel: {exc}"}), 502
+
+    caption = (info.get("description") or info.get("title") or "").strip()
+    return jsonify(
+        {
+            "caption": caption,
+            "author": info.get("uploader") or info.get("channel") or "",
+            "source": url,
+        }
+    )
 
 
 @app.route("/api/transcribe", methods=["POST"])
@@ -48,10 +86,9 @@ def transcribe():
     data = request.get_json(silent=True) or {}
     url = (data.get("url") or "").strip()
 
-    if not url:
-        return jsonify({"error": "Please provide a reel URL."}), 400
-    if not URL_PATTERN.match(url):
-        return jsonify({"error": "URL must be a Facebook or Instagram link."}), 400
+    error = validate_url(url)
+    if error:
+        return jsonify({"error": error}), 400
 
     tmp_dir = tempfile.mkdtemp(prefix="reel_")
     try:
