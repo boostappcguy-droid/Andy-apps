@@ -81,9 +81,15 @@
     });
   }
 
-  /* Contact form validation + simulated submit */
+  /* Contact form validation + Netlify Forms submit */
   var form = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
+
+  function encodeFormData(data) {
+    return Object.keys(data)
+      .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]); })
+      .join('&');
+  }
 
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -110,14 +116,36 @@
       toggleField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
       toggleField(service, service.value !== '');
 
+      formSuccess.classList.remove('is-visible', 'is-error');
+
       if (!valid) {
-        formSuccess.classList.remove('is-visible');
         return;
       }
 
-      formSuccess.textContent = 'Thanks, ' + name.value.trim().split(' ')[0] + '! Your request has been received. Our team will contact you shortly, or call us now at (832) 713-5266.';
-      formSuccess.classList.add('is-visible');
-      form.reset();
+      var submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (value, key) { payload[key] = value; });
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeFormData(payload)
+      })
+        .then(function (response) {
+          submitBtn.disabled = false;
+          if (!response.ok) throw new Error('Bad response: ' + response.status);
+          formSuccess.textContent = 'Thanks, ' + name.value.trim().split(' ')[0] + '! Your request has been received. Our team will contact you shortly, or call us now at (832) 713-5266.';
+          formSuccess.classList.add('is-visible');
+          form.reset();
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          formSuccess.textContent = 'Sorry, something went wrong sending your request. Please call us directly at (832) 713-5266.';
+          formSuccess.classList.add('is-visible', 'is-error');
+        });
     });
   }
 

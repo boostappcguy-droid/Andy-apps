@@ -260,6 +260,7 @@ input, select, textarea{ font: inherit; }
 .contact__social a:hover{ background: var(--blue-700); color: #fff; }
 
 .contact__form{ background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-md); }
+.hp-field{ position: absolute; left: -9999px; top: -9999px; }
 .form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .form-group{ margin-bottom: 20px; display: flex; flex-direction: column; }
 .form-group label{ font-weight: 700; font-size: 0.85rem; color: var(--navy); margin-bottom: 7px; }
@@ -273,6 +274,7 @@ input, select, textarea{ font: inherit; }
 .form-group.is-invalid .form-error{ display: block; }
 .form-success{ display: none; margin: 16px 0 0; text-align: center; font-weight: 700; color: #16824f; background: #e9f9f0; border: 1px solid #b9e8cd; border-radius: 10px; padding: 12px; }
 .form-success.is-visible{ display: block; }
+.form-success.is-error{ color: #d0392b; background: #fdecea; border-color: #f6c4bd; }
 
 /* ============ Footer ============ */
 .footer{ background: var(--navy); color: #b9d7e6; }
@@ -688,7 +690,11 @@ input, select, textarea{ font: inherit; }
         </div>
       </div>
 
-      <form class="contact__form reveal" id="contactForm" novalidate>
+      <form class="contact__form reveal" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp-field">
+          <label>Leave this field blank: <input name="bot-field"></label>
+        </p>
         <div class="form-row">
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -879,9 +885,15 @@ input, select, textarea{ font: inherit; }
     });
   }
 
-  /* Contact form validation + simulated submit */
+  /* Contact form validation + Netlify Forms submit */
   var form = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
+
+  function encodeFormData(data) {
+    return Object.keys(data)
+      .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]); })
+      .join('&');
+  }
 
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -908,14 +920,36 @@ input, select, textarea{ font: inherit; }
       toggleField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
       toggleField(service, service.value !== '');
 
+      formSuccess.classList.remove('is-visible', 'is-error');
+
       if (!valid) {
-        formSuccess.classList.remove('is-visible');
         return;
       }
 
-      formSuccess.textContent = 'Thanks, ' + name.value.trim().split(' ')[0] + '! Your request has been received. Our team will contact you shortly, or call us now at (832) 713-5266.';
-      formSuccess.classList.add('is-visible');
-      form.reset();
+      var submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (value, key) { payload[key] = value; });
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeFormData(payload)
+      })
+        .then(function (response) {
+          submitBtn.disabled = false;
+          if (!response.ok) throw new Error('Bad response: ' + response.status);
+          formSuccess.textContent = 'Thanks, ' + name.value.trim().split(' ')[0] + '! Your request has been received. Our team will contact you shortly, or call us now at (832) 713-5266.';
+          formSuccess.classList.add('is-visible');
+          form.reset();
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          formSuccess.textContent = 'Sorry, something went wrong sending your request. Please call us directly at (832) 713-5266.';
+          formSuccess.classList.add('is-visible', 'is-error');
+        });
     });
   }
 
