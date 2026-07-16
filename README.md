@@ -22,6 +22,28 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000`.
 
+## Google Reviews setup
+
+The Reviews section can display live Google reviews (rating, count, and the 5
+most recent) via `netlify/functions/reviews.js`, a serverless function that
+calls the Google Places API server-side so the API key is never exposed in
+page source. Responses are cached ~6 hours to stay well within free quota.
+
+To activate it:
+
+1. In [Google Cloud Console](https://console.cloud.google.com): create/select a
+   project → enable the **Places API** → create an **API key** (restrict it to
+   the Places API).
+2. Find the business's **Place ID** with Google's
+   [Place ID Finder](https://developers.google.com/maps/documentation/places/web-service/place-id)
+   (search the business name as it appears on Google Maps).
+3. In Netlify: Site configuration → **Environment variables** → add
+   `GOOGLE_MAPS_API_KEY` and `GOOGLE_PLACE_ID` → redeploy.
+
+The section stays hidden automatically until the function returns reviews, so
+nothing breaks while unconfigured. Note: functions require the site to be
+deployed from GitHub (or Netlify CLI) — anonymous Drop deploys don't run them.
+
 ## Notes
 
 - The contact form validates client-side and shows a confirmation message; it is not wired to a backend or email service yet.

@@ -149,6 +149,74 @@
     });
   }
 
+  /* Google reviews (served by Netlify function so the API key stays server-side) */
+  var gBox = document.getElementById('googleReviews');
+  if (gBox && window.fetch) {
+    var starString = function (n) {
+      var full = Math.round(n);
+      var s = '';
+      for (var i = 0; i < 5; i++) s += i < full ? '★' : '☆';
+      return s;
+    };
+
+    fetch('/.netlify/functions/reviews')
+      .then(function (r) {
+        if (!r.ok) throw new Error('reviews unavailable: ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data || !data.reviews || !data.reviews.length) return;
+
+        document.getElementById('gStars').textContent = starString(data.rating);
+        document.getElementById('gMeta').textContent =
+          data.rating.toFixed(1) + ' rating · ' + data.total + ' Google reviews';
+
+        var grid = document.getElementById('gGrid');
+        data.reviews.forEach(function (v) {
+          var card = document.createElement('div');
+          card.className = 'greview';
+
+          var head = document.createElement('div');
+          head.className = 'greview__head';
+          if (v.photo) {
+            var img = document.createElement('img');
+            img.src = v.photo;
+            img.alt = '';
+            img.loading = 'lazy';
+            img.referrerPolicy = 'no-referrer';
+            head.appendChild(img);
+          }
+          var who = document.createElement('div');
+          var name = document.createElement('strong');
+          name.textContent = v.author || 'Google user';
+          var when = document.createElement('span');
+          when.textContent = v.when || '';
+          who.appendChild(name);
+          who.appendChild(when);
+          head.appendChild(who);
+
+          var stars = document.createElement('div');
+          stars.className = 'greview__stars';
+          stars.textContent = starString(v.rating);
+
+          var text = document.createElement('p');
+          var t = v.text || '';
+          if (t.length > 220) t = t.slice(0, 217).replace(/\s+\S*$/, '') + '…';
+          text.textContent = t;
+
+          card.appendChild(head);
+          card.appendChild(stars);
+          card.appendChild(text);
+          grid.appendChild(card);
+        });
+
+        gBox.hidden = false;
+      })
+      .catch(function () {
+        /* Not configured yet or running without Netlify functions — section stays hidden. */
+      });
+  }
+
   /* Header shadow on scroll */
   var header = document.getElementById('header');
   if (header) {

@@ -211,6 +211,24 @@ input, select, textarea{ font: inherit; }
 .card__social{ display: flex; justify-content: center; gap: 18px; margin-top: 10px; }
 .card__social a{ color: var(--blue-700); font-weight: 700; font-size: 0.92rem; }
 
+.greviews{ margin-bottom: 56px; }
+.greviews__summary{ display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 28px; }
+.greviews__g{
+  width: 46px; height: 46px; border-radius: 50%; background: #fff; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1.45rem; color: #4285F4; box-shadow: var(--shadow-sm);
+}
+.greviews__stars{ color: #fbbc04; font-size: 1.15rem; letter-spacing: 2px; line-height: 1.2; }
+.greviews__meta{ color: var(--ink-soft); font-weight: 600; font-size: 0.92rem; }
+.greviews__grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.greview{ background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); }
+.greview__head{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.greview__head img{ width: 36px; height: 36px; border-radius: 50%; }
+.greview__head strong{ display: block; font-size: 0.92rem; color: var(--navy); }
+.greview__head span{ font-size: 0.78rem; color: var(--ink-soft); }
+.greview__stars{ color: #fbbc04; letter-spacing: 2px; margin-bottom: 8px; font-size: 0.95rem; }
+.greview p{ margin: 0; font-size: 0.9rem; line-height: 1.6; }
+
 .badge-row{ display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 44px; }
 .badge-pill{
   display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line);
@@ -620,6 +638,17 @@ input, select, textarea{ font: inherit; }
         <p>Our reputation is built one job at a time — and it shows in how the community and industry organizations recognize our work.</p>
       </div>
 
+      <div class="greviews" id="googleReviews" hidden>
+        <div class="greviews__summary">
+          <span class="greviews__g" aria-hidden="true">G</span>
+          <div>
+            <div class="greviews__stars" id="gStars" aria-hidden="true"></div>
+            <span class="greviews__meta" id="gMeta"></span>
+          </div>
+        </div>
+        <div class="greviews__grid" id="gGrid"></div>
+      </div>
+
       <div class="cards cards--3">
         <div class="card card--center reveal">
           <div class="card__icon card__icon--lg">
@@ -959,6 +988,74 @@ input, select, textarea{ font: inherit; }
           formSuccess.classList.add('is-visible', 'is-error');
         });
     });
+  }
+
+  /* Google reviews (served by Netlify function so the API key stays server-side) */
+  var gBox = document.getElementById('googleReviews');
+  if (gBox && window.fetch) {
+    var starString = function (n) {
+      var full = Math.round(n);
+      var s = '';
+      for (var i = 0; i < 5; i++) s += i < full ? '★' : '☆';
+      return s;
+    };
+
+    fetch('/.netlify/functions/reviews')
+      .then(function (r) {
+        if (!r.ok) throw new Error('reviews unavailable: ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data || !data.reviews || !data.reviews.length) return;
+
+        document.getElementById('gStars').textContent = starString(data.rating);
+        document.getElementById('gMeta').textContent =
+          data.rating.toFixed(1) + ' rating · ' + data.total + ' Google reviews';
+
+        var grid = document.getElementById('gGrid');
+        data.reviews.forEach(function (v) {
+          var card = document.createElement('div');
+          card.className = 'greview';
+
+          var head = document.createElement('div');
+          head.className = 'greview__head';
+          if (v.photo) {
+            var img = document.createElement('img');
+            img.src = v.photo;
+            img.alt = '';
+            img.loading = 'lazy';
+            img.referrerPolicy = 'no-referrer';
+            head.appendChild(img);
+          }
+          var who = document.createElement('div');
+          var name = document.createElement('strong');
+          name.textContent = v.author || 'Google user';
+          var when = document.createElement('span');
+          when.textContent = v.when || '';
+          who.appendChild(name);
+          who.appendChild(when);
+          head.appendChild(who);
+
+          var stars = document.createElement('div');
+          stars.className = 'greview__stars';
+          stars.textContent = starString(v.rating);
+
+          var text = document.createElement('p');
+          var t = v.text || '';
+          if (t.length > 220) t = t.slice(0, 217).replace(/\s+\S*$/, '') + '…';
+          text.textContent = t;
+
+          card.appendChild(head);
+          card.appendChild(stars);
+          card.appendChild(text);
+          grid.appendChild(card);
+        });
+
+        gBox.hidden = false;
+      })
+      .catch(function () {
+        /* Not configured yet or running without Netlify functions — section stays hidden. */
+      });
   }
 
   /* Header shadow on scroll */
