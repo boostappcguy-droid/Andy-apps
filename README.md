@@ -7,7 +7,10 @@ A responsive front-end marketing site for **State Cool AC & Heating**, a family-
 - `index.html` — single-page site (hero, services, about, service area with zip checker, reviews/accreditation, contact form, footer)
 - `css/styles.css` — all styling (responsive, mobile nav, animations)
 - `js/main.js` — mobile nav toggle, scroll reveal, zip coverage checker, contact form validation
+- `assets/logo.png` / `assets/logo-header.png` — official logo (full-res and header-sized)
 - `assets/favicon.svg` — site favicon
+- `statecool-standalone.html` — single-file build with all assets inlined (regenerate with `python3 build-standalone.py`)
+- `under-construction.html` — self-contained holding page for pre-launch
 
 ## Running locally
 
