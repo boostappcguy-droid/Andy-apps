@@ -2,16 +2,19 @@
 // Keeps the API key out of client-side code and caches responses
 // so normal traffic never burns through Places API quota.
 //
-// Required environment variables (Netlify: Site configuration → Environment variables):
+// Required environment variable (Netlify: Site configuration → Environment variables):
 //   GOOGLE_MAPS_API_KEY  — API key with Places API enabled
-//   GOOGLE_PLACE_ID      — the business's Place ID (see README)
+// Optional:
+//   GOOGLE_PLACE_ID      — overrides the default State Cool Place ID below
+
+const DEFAULT_PLACE_ID = 'ChIJO5VUgpHLQIYRW82NC0Z1q7k'; // State Cool AC & Heating
 
 let cache = { data: null, ts: 0 };
 const TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 exports.handler = async () => {
   const key = process.env.GOOGLE_MAPS_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID;
+  const placeId = process.env.GOOGLE_PLACE_ID || DEFAULT_PLACE_ID;
 
   if (!key || !placeId) {
     return respond(503, { error: 'Reviews are not configured yet.' });

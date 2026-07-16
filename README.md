@@ -34,11 +34,12 @@ To activate it:
 1. In [Google Cloud Console](https://console.cloud.google.com): create/select a
    project → enable the **Places API** → create an **API key** (restrict it to
    the Places API).
-2. Find the business's **Place ID** with Google's
-   [Place ID Finder](https://developers.google.com/maps/documentation/places/web-service/place-id)
-   (search the business name as it appears on Google Maps).
-3. In Netlify: Site configuration → **Environment variables** → add
-   `GOOGLE_MAPS_API_KEY` and `GOOGLE_PLACE_ID` → redeploy.
+2. In Netlify: Site configuration → **Environment variables** → add
+   `GOOGLE_MAPS_API_KEY` → redeploy.
+
+The State Cool Place ID (`ChIJO5VUgpHLQIYRW82NC0Z1q7k`) is built into the
+function as the default; set `GOOGLE_PLACE_ID` only to point at a different
+listing.
 
 The section stays hidden automatically until the function returns reviews, so
 nothing breaks while unconfigured. Note: functions require the site to be
