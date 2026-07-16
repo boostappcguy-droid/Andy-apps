@@ -29,10 +29,12 @@ html = html.replace(
     '<script src="js/main.js"></script>',
     f'<script>\n{js}\n</script>'
 )
-html = html.replace(
-    'src="assets/logo-header.png"',
-    f'src="data:image/png;base64,{b64("assets/logo-header.png")}"'
-)
+import re
+
+MIME = {'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'svg': 'image/svg+xml', 'webp': 'image/webp'}
+for asset in sorted(set(re.findall(r'src="(assets/[^"]+)"', html))):
+    ext = asset.rsplit('.', 1)[-1].lower()
+    html = html.replace(f'src="{asset}"', f'src="data:{MIME[ext]};base64,{b64(asset)}"')
 
 with open('statecool-standalone.html', 'w', encoding='utf-8') as f:
     f.write(html)
