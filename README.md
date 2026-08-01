@@ -11,6 +11,23 @@ A responsive front-end marketing site for **State Cool AC & Heating**, a family-
 - `assets/favicon.svg` — site favicon
 - `statecool-standalone.html` — single-file build with all assets inlined (regenerate with `python3 build-standalone.py`)
 - `under-construction.html` — self-contained holding page for pre-launch
+- `robots.txt` / `sitemap.xml` — crawl directives + sitemap for search engines
+
+## SEO
+
+On-page and technical SEO baked into `index.html`:
+
+- Keyword-optimized `<title>` and meta description (AC repair & installation,
+  Houston/Tomball/Conroe/The Woodlands)
+- Canonical URL, robots directives, geo meta tags
+- Open Graph + Twitter Card tags for link previews (uses `assets/photo-van.jpg`)
+- **`HVACBusiness` JSON-LD structured data** (name, phone, address, geo, area
+  served, services, social profiles) for local rich results
+- `robots.txt` + `sitemap.xml` at the site root
+
+After launch, submit the site in **Google Search Console** (verify the domain,
+submit `https://statecool.com/sitemap.xml`) and confirm the Google Business
+Profile NAP (name/address/phone) matches the JSON-LD exactly.
 
 ## Running locally
 
